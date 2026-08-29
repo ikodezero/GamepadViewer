@@ -1,300 +1,244 @@
 /*
-  KodeZero Minimal Xbox — GamePad Viewer custom skin
-  Transparent Xbox-shaped wireframe controller.
-  Use:
-  https://gamepadviewer.com/?p=1&css=YOUR_ENCODED_CSS_URL
-
-  White = #fff
-  Inactive opacity = .72
-  Active inputs fill white
+KodeZero Minimal Xbox v2
+GamePad Viewer custom CSS
+Geometry follows the known-working Xbox One custom-skin structure.
+No external image assets.
 */
 
 .controller.custom {
-    width: 750px;
-    height: 550px;
+    width: 784px;
+    height: 558px;
     position: relative;
-    background: url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22750%22%20height=%22550%22%20viewBox=%220%200%20750%20550%22%3E%0A%3Cpath%20d=%22M170%20105%0AC130%20108%20101%20133%2084%20177%0AL31%20351%0AC17%20401%2024%20453%2057%20473%0AC86%20491%20115%20469%20145%20421%0AL207%20330%0AC230%20296%20260%20282%20300%20282%0AH450%0AC490%20282%20520%20296%20543%20330%0AL605%20421%0AC635%20469%20664%20491%20693%20473%0AC726%20453%20733%20401%20719%20351%0AL666%20177%0AC649%20133%20620%20108%20580%20105%0AC526%20101%20478%20118%20439%20137%0AC419%20147%20397%20152%20375%20152%0AC353%20152%20331%20147%20311%20137%0AC272%20118%20224%20101%20170%20105Z%22%0Afill=%22none%22%20stroke=%22#FFFFFF%22%20stroke-width=%225%22%20stroke-linecap=%22round%22%20stroke-linejoin=%22round%22/%3E%0A%3C/svg%3E") center center / 750px 550px no-repeat;
-    opacity: 1;
+    background: none !important;
 }
 
-.custom.disconnected {
-    opacity: .30;
-}
-
-.custom.disconnected div {
-    display: none;
-}
-
-/* ---------- shared ---------- */
-
-.custom .button,
-.custom .stick,
-.custom .face,
-.custom .bumper,
-.custom .trigger,
-.custom .back,
-.custom .start,
-.custom .quadrant {
-    box-sizing: border-box;
-}
-
-.custom .button,
-.custom .stick,
-.custom .face,
-.custom .bumper,
-.custom .back,
-.custom .start,
-.custom .quadrant {
-    border: 4px solid rgba(255,255,255,.72);
-    background: transparent;
-    transition: background-color .045s linear,
-                border-color .045s linear,
-                opacity .045s linear;
-}
-
-.custom .button.pressed,
-.custom .stick.pressed,
-.custom .face.pressed,
-.custom .bumper.pressed,
-.custom .back.pressed,
-.custom .start.pressed {
-    background: #fff;
-    border-color: #fff;
-}
-
-/* ---------- triggers ---------- */
-
-.custom .triggers {
+/* Xbox-style shell built from CSS so it cannot fail due to image/CSP loading. */
+.controller.custom::before {
+    content: "";
     position: absolute;
-    width: 510px;
-    height: 62px;
-    left: 120px;
-    top: 66px;
+    z-index: 0;
+    left: 112px;
+    top: 78px;
+    width: 560px;
+    height: 355px;
+    box-sizing: border-box;
+    border: 4px solid rgba(255,255,255,.82);
+    border-radius: 44% 44% 31% 31% / 27% 27% 49% 49%;
+    transform: perspective(600px) rotateX(-2deg);
+    pointer-events: none;
 }
 
+/* lower grips */
+.controller.custom::after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    left: 151px;
+    top: 325px;
+    width: 482px;
+    height: 150px;
+    border-left: 4px solid rgba(255,255,255,.82);
+    border-right: 4px solid rgba(255,255,255,.82);
+    border-bottom: 4px solid rgba(255,255,255,.82);
+    border-radius: 0 0 42% 42% / 0 0 100% 100%;
+    transform: skewX(0deg);
+    pointer-events: none;
+}
+
+.custom.disconnected { opacity: .3; }
+.custom.disconnected div { display: none; }
+
+.custom .triggers,
+.custom .bumpers,
+.custom .quadrant,
+.custom .arrows,
+.custom .abxy,
+.custom .sticks,
+.custom .dpad {
+    z-index: 2;
+}
+
+/* TRIGGERS — same parent geometry as a working Xbox One skin */
+.custom .triggers {
+    width: 586px;
+    height: 65px;
+    position: absolute;
+    left: 99px;
+    top: 40px;
+}
 .custom .trigger {
-    width: 108px;
-    height: 48px;
+    box-sizing: border-box;
+    width: 86px;
+    height: 55px;
     border: 4px solid rgba(255,255,255,.72);
-    border-radius: 24px 24px 12px 12px;
-    background: #fff;
+    border-radius: 24px 24px 10px 10px;
+    background: #fff !important;
     opacity: 0;
 }
+.custom .trigger.left { float:left; }
+.custom .trigger.right { float:right; }
 
-.custom .trigger.left {
-    float: left;
-}
-
-.custom .trigger.right {
-    float: right;
-}
-
-/* ---------- bumpers ---------- */
-
+/* BUMPERS */
 .custom .bumpers {
-    position: absolute;
-    width: 520px;
-    height: 32px;
-    left: 115px;
-    top: 112px;
+    position:absolute;
+    width:586px;
+    height:28px;
+    left:99px;
+    top:72px;
 }
-
 .custom .bumper {
-    width: 150px;
-    height: 26px;
-    border-radius: 14px 14px 8px 8px;
+    box-sizing:border-box;
+    width:89px;
+    height:28px;
+    border:4px solid rgba(255,255,255,.72);
+    border-radius:14px 14px 7px 7px;
+    background:transparent !important;
+    opacity:.72;
 }
-
-.custom .bumper.left {
-    float: left;
+.custom .bumper.pressed {
+    opacity:1;
+    background:#fff !important;
 }
+.custom .bumper.left { float:left; }
+.custom .bumper.right { float:right; }
 
-.custom .bumper.right {
-    float: right;
-}
-
-/* ---------- center / Xbox button ---------- */
-
+/* CENTER / GUIDE INDICATOR */
 .custom .quadrant {
-    position: absolute;
-    width: 48px;
-    height: 48px;
-    left: 351px;
-    top: 156px;
-    border-radius: 50%;
+    position:absolute;
+    box-sizing:border-box;
+    width:48px;
+    height:48px;
+    top:138px;
+    left:368px;
+    border:4px solid rgba(255,255,255,.72);
+    border-radius:50%;
+    background:transparent !important;
 }
 
-/* ---------- View / Menu ---------- */
-
+/* VIEW + MENU */
 .custom .arrows {
-    position: absolute;
-    width: 150px;
-    height: 30px;
-    left: 300px;
-    top: 222px;
+    position:absolute;
+    width:205px;
+    height:24px;
+    top:250px;
+    left:291px;
 }
-
 .custom .back,
 .custom .start {
-    position: absolute;
-    width: 30px;
-    height: 22px;
-    border-radius: 7px;
+    box-sizing:border-box;
+    width:34px;
+    height:22px;
+    border:4px solid rgba(255,255,255,.72);
+    border-radius:7px;
+    background:transparent !important;
+}
+.custom .back { float:left; }
+.custom .start { float:right; }
+.custom .back.pressed,
+.custom .start.pressed {
+    background:#fff !important;
+    border-color:#fff;
 }
 
-.custom .back {
-    left: 0;
-}
-
-.custom .start {
-    right: 0;
-}
-
-/* ---------- ABXY ---------- */
-
+/* ABXY — working Xbox One container coordinates */
 .custom .abxy {
-    position: absolute;
-    width: 160px;
-    height: 160px;
-    left: 515px;
-    top: 176px;
+    position:absolute;
+    width:204px;
+    height:205px;
+    top:156px;
+    left:538px;
 }
-
 .custom .button {
-    position: absolute;
-    width: 46px;
-    height: 46px;
-    border-radius: 50%;
+    position:absolute;
+    box-sizing:border-box;
+    width:54px;
+    height:54px;
+    border:4px solid rgba(255,255,255,.72);
+    border-radius:50%;
+    background:transparent !important;
 }
-
-.custom .a {
-    left: 57px;
-    top: 114px;
+.custom .button.pressed {
+    background:#fff !important;
+    border-color:#fff;
 }
+.custom .a { top:142px; left:71px; }
+.custom .b { top:71px; right:0; }
+.custom .x { top:71px; left:0; }
+.custom .y { top:0; left:71px; }
 
-.custom .b {
-    left: 114px;
-    top: 57px;
-}
-
-.custom .x {
-    left: 0;
-    top: 57px;
-}
-
-.custom .y {
-    left: 57px;
-    top: 0;
-}
-
-/* ---------- analog sticks ---------- */
-
+/* STICKS — working Xbox One parent coordinates */
 .custom .sticks {
-    position: absolute;
-    width: 338px;
-    height: 190px;
-    left: 166px;
-    top: 205px;
+    position:absolute;
+    width:364px;
+    height:105px;
+    top:328px;
+    left:210px;
 }
-
 .custom .stick {
-    position: absolute;
-    width: 84px;
-    height: 84px;
-    border-radius: 50%;
-    background: rgba(0,0,0,.001);
-    box-shadow: inset 0 0 0 8px rgba(255,255,255,.11);
+    position:absolute;
+    box-sizing:border-box;
+    width:105px;
+    height:105px;
+    border:4px solid rgba(255,255,255,.72);
+    border-radius:50%;
+    background:rgba(0,0,0,.001) !important;
+    box-shadow:inset 0 0 0 10px rgba(255,255,255,.10);
 }
-
-.custom .stick.left {
-    left: 0;
-    top: 0;
-}
-
-.custom .stick.right {
-    right: 0;
-    bottom: 0;
-}
-
+.custom .stick.left { top:0; left:0; }
+.custom .stick.right { top:0; left:259px; }
 .custom .stick.pressed {
-    background: #fff;
-    box-shadow: none;
+    background:#fff !important;
+    box-shadow:none;
 }
 
-/* ---------- D-pad ---------- */
-
+/* D-PAD — working Xbox One container coordinates */
 .custom .dpad {
-    position: absolute;
-    width: 140px;
-    height: 140px;
-    left: 178px;
-    top: 335px;
+    position:absolute;
+    width:140px;
+    height:132px;
+    top:192px;
+    left:74px;
 }
-
-/*
-  Four separate directional bars form a clean Xbox-style plus.
-  Each direction fills independently when pressed.
-*/
 .custom .face {
-    position: absolute;
-    border-radius: 6px;
+    position:absolute;
+    box-sizing:border-box;
+    border:4px solid rgba(255,255,255,.72);
+    background:transparent !important;
 }
-
 .custom .face.up,
 .custom .face.down {
-    width: 40px;
-    height: 58px;
-    left: 50px;
+    width:38px;
+    height:52px;
 }
-
 .custom .face.left,
 .custom .face.right {
-    width: 58px;
-    height: 40px;
-    top: 50px;
+    width:52px;
+    height:38px;
 }
-
 .custom .face.up {
-    top: 5px;
-    border-radius: 8px 8px 3px 3px;
+    left:50px; top:0;
+    border-radius:8px 8px 3px 3px;
 }
-
 .custom .face.down {
-    bottom: 5px;
-    border-radius: 3px 3px 8px 8px;
+    left:50px; top:79px;
+    border-radius:3px 3px 8px 8px;
 }
-
 .custom .face.left {
-    left: 5px;
-    border-radius: 8px 3px 3px 8px;
+    top:47px; left:0;
+    border-radius:8px 3px 3px 8px;
 }
-
 .custom .face.right {
-    right: 5px;
-    border-radius: 3px 8px 8px 3px;
+    top:47px; right:0;
+    border-radius:3px 8px 8px 3px;
+}
+.custom .face.pressed {
+    background:#fff !important;
+    border-color:#fff;
 }
 
-/* ---------- fight-stick / digital trigger fallbacks ---------- */
+/* Hide fight-stick-only elements */
+.custom .trigger-button,
+.custom .fstick { display:none !important; }
 
-.custom .trigger-button {
-    display: none;
-}
+html, body { background:transparent !important; }
 
-.custom .fstick {
-    display: none;
-}
-
-/* ---------- remove unwanted imagery/text if inherited ---------- */
-
-.custom * {
-    background-image: none;
-}
-
-.custom .trigger {
-    background-image: none;
-}
-
-/* Keep all controller internals transparent except active input fills. */
-html, body {
-    background: transparent !important;
-}
