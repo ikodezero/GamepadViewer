@@ -8,8 +8,31 @@ No external image assets.
 .controller.custom {
     width: 784px;
     height: 558px;
-    position: relative;
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    margin: 0 !important;
+    transform: none !important;
     background: none !important;
+}
+
+/* Neutralize GamePad Viewer's default stage centering for custom skins. */
+#gamepads,
+.gamepads {
+    position: relative !important;
+    width: 784px !important;
+    height: 558px !important;
+    left: 0 !important;
+    top: 0 !important;
+    margin: 0 !important;
+    transform: none !important;
+    overflow: visible !important;
+}
+
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
 }
 
 /* Xbox-style shell built from CSS so it cannot fail due to image/CSP loading. */
