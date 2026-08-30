@@ -1,222 +1,204 @@
 /*
-KodeZero Minimal Xbox v4
-GamePad Viewer custom CSS
-Transparent Xbox-style outline HUD.
+KodeZero Minimal Xbox v5
+Built directly on the supplied GamePad Viewer / Elite 2 reference geometry.
+812 x 569 native skin canvas.
 */
 
 html, body {
-    background: transparent !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    overflow: hidden !important;
+  background: transparent !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
 }
 
 #gamepads, .gamepads {
-    position: relative !important;
-    width: 784px !important;
-    height: 558px !important;
-    left: 0 !important;
-    top: 0 !important;
-    margin: 0 !important;
-    transform: none !important;
-    overflow: visible !important;
+  position: relative !important;
+  width: 812px !important;
+  height: 569px !important;
+  left: 0 !important;
+  top: 0 !important;
+  margin: 0 !important;
+  transform: none !important;
+  overflow: visible !important;
 }
 
 .controller.custom {
-    width: 784px;
-    height: 558px;
-    position: absolute !important;
-    left: 0 !important;
-    top: 0 !important;
-    margin: 0 !important;
-    transform: none !important;
-    background: none !important;
+  background: url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22812%22%20height=%22569%22%20viewBox=%220%200%20812%20569%22%3E%0A%3Cpath%20d=%22M176%2066%0AC128%2070%2099%2094%2082%20142%0AL31%20322%0AC15%20379%2020%20448%2058%20478%0AC91%20504%20126%20474%20159%20421%0AL214%20337%0AC237%20301%20270%20285%20311%20285%0AH501%0AC542%20285%20575%20301%20598%20337%0AL653%20421%0AC686%20474%20721%20504%20754%20478%0AC792%20448%20797%20379%20781%20322%0AL730%20142%0AC713%2094%20684%2070%20636%2066%0AC576%2061%20527%2080%20483%20100%0AC457%20112%20432%20118%20406%20118%0AC380%20118%20355%20112%20329%20100%0AC285%2080%20236%2061%20176%2066Z%22%0Afill=%22none%22%20stroke=%22white%22%20stroke-opacity=%22.82%22%20stroke-width=%224%22%0Astroke-linecap=%22round%22%20stroke-linejoin=%22round%22/%3E%0A%3C/svg%3E") 0 0 / 812px 569px no-repeat !important;
+  width: 812px;
+  height: 569px;
+  position: absolute !important;
+  left: 0 !important;
+  top: 0 !important;
+  margin: 0 !important;
+  transform: none !important;
 }
 
-/* Xbox-like body: broad shoulders, narrowed middle, long angled grips. */
-.controller.custom::before {
-    content:"";
-    position:absolute;
-    z-index:0;
-    left:72px;
-    top:76px;
-    width:640px;
-    height:380px;
-    box-sizing:border-box;
-    border:4px solid rgba(255,255,255,.82);
-    border-radius: 29% 29% 22% 22% / 25% 25% 42% 42%;
-    clip-path: polygon(
-        12% 3%, 31% 0%, 42% 9%, 50% 12%, 58% 9%, 69% 0%, 88% 3%,
-        96% 15%, 99% 36%, 100% 58%, 95% 82%, 87% 100%,
-        76% 98%, 68% 78%, 61% 68%, 50% 65%, 39% 68%, 32% 78%,
-        24% 98%, 13% 100%, 5% 82%, 0% 58%, 1% 36%, 4% 15%
-    );
-    pointer-events:none;
-}
+.custom.disconnected { opacity: .3; }
+.custom.disconnected div { display: none; }
 
-/* Add the characteristic lower grip edges independently of the clipped body. */
-.controller.custom::after {
-    content:"";
-    position:absolute;
-    z-index:0;
-    left:113px;
-    top:329px;
-    width:558px;
-    height:157px;
-    box-sizing:border-box;
-    border-left:4px solid rgba(255,255,255,.82);
-    border-right:4px solid rgba(255,255,255,.82);
-    border-bottom:4px solid rgba(255,255,255,.82);
-    border-radius:0 0 35% 35% / 0 0 100% 100%;
-    transform:perspective(400px) rotateX(-7deg);
-    pointer-events:none;
-}
-
-.custom.disconnected { opacity:.3; }
-.custom.disconnected div { display:none; }
-
-.custom .triggers, .custom .bumpers, .custom .quadrant, .custom .arrows,
-.custom .abxy, .custom .sticks, .custom .dpad { z-index:2; }
-
-/* LT / RT */
+/* LT / RT — reference parent geometry */
 .custom .triggers {
-    position:absolute;
-    width:548px;
-    height:55px;
-    left:118px;
-    top:42px;
+  width: 558px;
+  height: 65px;
+  position: absolute;
+  left: 129px;
+  top: 22px;
 }
 .custom .trigger {
-    box-sizing:border-box;
-    width:105px;
-    height:48px;
-    border:4px solid rgba(255,255,255,.72);
-    border-radius:22px 22px 8px 8px;
-    background:#fff !important;
-    opacity:0;
+  box-sizing: border-box;
+  width: 86px;
+  height: 52px;
+  border: 4px solid rgba(255,255,255,.72);
+  border-radius: 22px 22px 9px 9px;
+  background: #fff !important;
+  opacity: 0;
 }
 .custom .trigger.left { float:left; }
 .custom .trigger.right { float:right; }
 
-/* LB / RB */
+/* LB / RB — supplied reference geometry */
 .custom .bumpers {
-    position:absolute;
-    width:566px;
-    height:25px;
-    left:109px;
-    top:78px;
+  position: absolute;
+  width: 571px;
+  height: 71px;
+  left: 120px;
+  top: 61px;
 }
 .custom .bumper {
-    box-sizing:border-box;
-    width:145px;
-    height:25px;
-    border:4px solid rgba(255,255,255,.72);
-    border-radius:14px 14px 6px 6px;
-    background:transparent !important;
+  box-sizing: border-box;
+  width: 177px;
+  height: 30px;
+  border: 4px solid rgba(255,255,255,.72);
+  border-radius: 15px 15px 7px 7px;
+  background: transparent !important;
 }
 .custom .bumper.left { float:left; }
 .custom .bumper.right { float:right; }
-.custom .bumper.pressed { background:#fff !important; border-color:#fff; }
 
-/* Xbox / Guide */
+/* Guide */
 .custom .quadrant {
-    position:absolute;
-    box-sizing:border-box;
-    width:46px;
-    height:46px;
-    left:369px;
-    top:129px;
-    border:4px solid rgba(255,255,255,.72);
-    border-radius:50%;
-    background:transparent !important;
+  position: absolute;
+  box-sizing: border-box;
+  background: transparent !important;
+  border: 4px solid rgba(255,255,255,.72);
+  border-radius: 50%;
+  height: 48px;
+  width: 48px;
+  top: 123px;
+  left: 382px;
 }
 
-/* View / Menu */
+/* View / Menu — supplied reference geometry */
 .custom .arrows {
-    position:absolute;
-    width:160px;
-    height:24px;
-    left:312px;
-    top:205px;
+  position: absolute;
+  width: 157px;
+  height: 39px;
+  top: 138px;
+  left: 327px;
 }
-.custom .back, .custom .start {
-    box-sizing:border-box;
-    width:29px;
-    height:20px;
-    border:4px solid rgba(255,255,255,.72);
-    border-radius:6px;
-    background:transparent !important;
+.custom .back,
+.custom .start {
+  box-sizing: border-box;
+  width: 36px;
+  height: 26px;
+  border: 4px solid rgba(255,255,255,.72);
+  border-radius: 7px;
+  background: transparent !important;
 }
 .custom .back { float:left; }
 .custom .start { float:right; }
-.custom .back.pressed, .custom .start.pressed { background:#fff !important; }
 
-/* ABXY */
+/* ABXY — exact supplied parent coordinates */
 .custom .abxy {
-    position:absolute;
-    width:148px;
-    height:148px;
-    left:535px;
-    top:164px;
+  position: absolute;
+  width: 172px;
+  height: 168px;
+  top: 75px;
+  left: 532px;
 }
 .custom .button {
-    position:absolute;
-    box-sizing:border-box;
-    width:44px;
-    height:44px;
-    border:4px solid rgba(255,255,255,.72);
-    border-radius:50%;
-    background:transparent !important;
+  position: absolute;
+  box-sizing: border-box;
+  width: 52px;
+  height: 52px;
+  border: 4px solid rgba(255,255,255,.72);
+  border-radius: 50%;
+  background: transparent !important;
 }
-.custom .a { left:52px; top:104px; }
-.custom .b { left:104px; top:52px; }
-.custom .x { left:0; top:52px; }
-.custom .y { left:52px; top:0; }
-.custom .button.pressed { background:#fff !important; border-color:#fff; }
+.custom .a { top:110px; left:57px; }
+.custom .b { top:57px; right:0; }
+.custom .x { top:55px; left:0; }
+.custom .y { top:0; left:58px; }
 
-/* Asymmetric Xbox sticks */
+/* Sticks — exact supplied parent coordinates.
+   GamePad Viewer JS continues to apply movement inline. */
 .custom .sticks {
-    position:absolute;
-    width:386px;
-    height:186px;
-    left:190px;
-    top:166px;
+  position: absolute;
+  width: 422px;
+  height: 220px;
+  top: 110px;
+  left: 147px;
 }
 .custom .stick {
-    position:absolute;
-    box-sizing:border-box;
-    width:78px;
-    height:78px;
-    border:4px solid rgba(255,255,255,.72);
-    border-radius:50%;
-    background:rgba(0,0,0,.001) !important;
-    box-shadow:inset 0 0 0 8px rgba(255,255,255,.10);
+  position: absolute;
+  box-sizing: border-box;
+  height: 92px;
+  width: 94px;
+  border: 4px solid rgba(255,255,255,.72);
+  border-radius: 50%;
+  background: rgba(0,0,0,.001) !important;
+  box-shadow: inset 0 0 0 9px rgba(255,255,255,.10);
 }
-.custom .stick.left { left:0; top:0; }
-.custom .stick.right { right:0; bottom:0; }
-.custom .stick.pressed { background:#fff !important; box-shadow:none; }
+.custom .stick.left { top:0; left:0; }
+.custom .stick.right {
+  top: calc(100% - 96px);
+  left: calc(100% - 101px);
+}
 
-/* D-pad below left stick */
+/* D-pad — exact supplied reference geometry */
 .custom .dpad {
-    position:absolute;
-    width:112px;
-    height:112px;
-    left:222px;
-    top:300px;
+  position: absolute;
+  width: 140px;
+  height: 132px;
+  top: 192px;
+  left: 74px;
 }
 .custom .face {
-    position:absolute;
-    box-sizing:border-box;
-    border:4px solid rgba(255,255,255,.72);
-    background:transparent !important;
+  position: absolute;
+  box-sizing: border-box;
+  border: 4px solid rgba(255,255,255,.72);
+  background: transparent !important;
 }
-.custom .face.up, .custom .face.down { width:34px; height:46px; left:39px; }
-.custom .face.left, .custom .face.right { width:46px; height:34px; top:39px; }
-.custom .face.up { top:0; border-radius:7px 7px 2px 2px; }
-.custom .face.down { bottom:0; border-radius:2px 2px 7px 7px; }
-.custom .face.left { left:0; border-radius:7px 2px 2px 7px; }
-.custom .face.right { right:0; border-radius:2px 7px 7px 2px; }
-.custom .face.pressed { background:#fff !important; border-color:#fff; }
+.custom .face.up,
+.custom .face.down { width:38px; height:52px; }
+.custom .face.left,
+.custom .face.right { width:52px; height:38px; }
+.custom .face.up { left:50px; top:0; border-radius:7px 7px 2px 2px; }
+.custom .face.down { left:50px; top:79px; border-radius:2px 2px 7px 7px; }
+.custom .face.left { top:47px; left:0; border-radius:7px 2px 2px 7px; }
+.custom .face.right { top:47px; right:0; border-radius:2px 7px 7px 2px; }
 
-.custom .trigger-button, .custom .fstick { display:none !important; }
+/* Active input language */
+.custom .pressed {
+  filter: none !important;
+}
+.custom .button.pressed,
+.custom .bumper.pressed,
+.custom .back.pressed,
+.custom .start.pressed,
+.custom .face.pressed,
+.custom .stick.pressed {
+  background: #fff !important;
+  border-color: #fff !important;
+  box-shadow: none !important;
+}
+.custom .face.pressed {
+  margin-top: 0 !important;
+}
 
+/* No legacy artwork */
+.custom .trigger-button.left,
+.custom .trigger-button.right,
+.fstick {
+  display: none !important;
+}
