@@ -316,3 +316,111 @@ Only visual assets are removed/blanked. Original geometry is preserved.
 }
 
 /* END Elite 2 Controller Styling */
+
+
+/* =========================================================
+   KodeZero Minimal Visual Layer
+   IMPORTANT: no original Elite 2 coordinates are changed.
+   This only adds visuals to the existing elements.
+   ========================================================= */
+
+.custom .button,
+.custom .stick,
+.custom .face,
+.custom .bumper,
+.custom .back,
+.custom .start,
+.custom .quadrant,
+.custom .trigger {
+  box-sizing: border-box;
+}
+
+/* ABXY — blank circles */
+.custom .button {
+  border: 3px solid rgba(255,255,255,.85);
+  border-radius: 50%;
+  background: transparent !important;
+}
+
+/* Analog sticks — blank circles */
+.custom .stick {
+  border: 3px solid rgba(255,255,255,.85);
+  border-radius: 50%;
+  background: transparent !important;
+}
+
+/* D-pad — retain the Elite element sizes, draw each direction */
+.custom .face {
+  border: 3px solid rgba(255,255,255,.85);
+  background: transparent !important;
+}
+.custom .face.up {
+  border-radius: 6px 6px 2px 2px;
+}
+.custom .face.down {
+  border-radius: 2px 2px 6px 6px;
+}
+.custom .face.left {
+  border-radius: 6px 2px 2px 6px;
+}
+.custom .face.right {
+  border-radius: 2px 6px 6px 2px;
+}
+
+/* View / Menu */
+.custom .back,
+.custom .start {
+  border: 3px solid rgba(255,255,255,.85);
+  border-radius: 6px;
+  background: transparent !important;
+}
+
+/* Guide / player indicator — visual only, original position untouched */
+.custom .quadrant {
+  border: 3px solid rgba(255,255,255,.85);
+  border-radius: 9px;
+  background: transparent !important;
+}
+
+/* LB / RB */
+.custom .bumper {
+  border: 3px solid rgba(255,255,255,.85);
+  border-radius: 14px 14px 6px 6px;
+  background: transparent !important;
+}
+
+/* LT / RT.
+   GamePad Viewer controls trigger opacity according to analog pressure. */
+.custom .trigger {
+  border: 3px solid rgba(255,255,255,.85);
+  border-radius: 16px 16px 6px 6px;
+  background: #fff !important;
+}
+
+/* Active inputs */
+.custom .button.pressed,
+.custom .stick.pressed,
+.custom .face.pressed,
+.custom .back.pressed,
+.custom .start.pressed,
+.custom .bumper.pressed {
+  background: #fff !important;
+  border-color: #fff !important;
+  filter: none !important;
+}
+
+/* Don't let the original Elite .pressed filter invert our blank shapes. */
+.custom .pressed {
+  filter: none !important;
+}
+
+/* Keep D-pad from shifting downward on press. */
+.custom .face.pressed {
+  margin-top: 0 !important;
+}
+
+/* Keep the canvas itself transparent. */
+html,
+body {
+  background: transparent !important;
+}
