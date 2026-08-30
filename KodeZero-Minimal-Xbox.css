@@ -1,94 +1,108 @@
 /*
-KodeZero Minimal Xbox v5
-Built directly on the supplied GamePad Viewer / Elite 2 reference geometry.
-812 x 569 native skin canvas.
+KodeZero Elite 2 — Transparent / Blank Controls
+Source: the Elite 2 GamePad Viewer CSS supplied by the user.
+Only visual assets are removed/blanked. Original geometry is preserved.
 */
 
-html, body {
-  background: transparent !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  overflow: hidden !important;
-}
-
-#gamepads, .gamepads {
-  position: relative !important;
-  width: 812px !important;
-  height: 569px !important;
-  left: 0 !important;
-  top: 0 !important;
-  margin: 0 !important;
-  transform: none !important;
-  overflow: visible !important;
-}
+/* BEGIN Elite 2 Controller Styling */
 
 .controller.custom {
-  background: url("data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20width=%22812%22%20height=%22569%22%20viewBox=%220%200%20812%20569%22%3E%0A%3Cpath%20d=%22M176%2066%0AC128%2070%2099%2094%2082%20142%0AL31%20322%0AC15%20379%2020%20448%2058%20478%0AC91%20504%20126%20474%20159%20421%0AL214%20337%0AC237%20301%20270%20285%20311%20285%0AH501%0AC542%20285%20575%20301%20598%20337%0AL653%20421%0AC686%20474%20721%20504%20754%20478%0AC792%20448%20797%20379%20781%20322%0AL730%20142%0AC713%2094%20684%2070%20636%2066%0AC576%2061%20527%2080%20483%20100%0AC457%20112%20432%20118%20406%20118%0AC380%20118%20355%20112%20329%20100%0AC285%2080%20236%2061%20176%2066Z%22%0Afill=%22none%22%20stroke=%22white%22%20stroke-opacity=%22.82%22%20stroke-width=%224%22%0Astroke-linecap=%22round%22%20stroke-linejoin=%22round%22/%3E%0A%3C/svg%3E") 0 0 / 812px 569px no-repeat !important;
+  /* Original: background: url(elite2-assets/base.png); */
+  background: none !important;
   width: 812px;
   height: 569px;
-  position: absolute !important;
-  left: 0 !important;
-  top: 0 !important;
-  margin: 0 !important;
-  transform: none !important;
 }
 
-.custom.disconnected { opacity: .3; }
-.custom.disconnected div { display: none; }
+.custom.disconnected {
+  /* Original: background: url(elite2-assets/base-disconnect.png); */
+  background: none !important;
+}
 
-/* LT / RT — reference parent geometry */
+.custom.disconnected div {
+  display: none;
+}
+
 .custom .triggers {
   width: 558px;
   height: 65px;
   position: absolute;
   left: 129px;
-  top: 22px;
+  top: -80px;
 }
-.custom .trigger {
-  box-sizing: border-box;
-  width: 86px;
-  height: 52px;
-  border: 4px solid rgba(255,255,255,.72);
-  border-radius: 22px 22px 9px 9px;
-  background: #fff !important;
-  opacity: 0;
-}
-.custom .trigger.left { float:left; }
-.custom .trigger.right { float:right; }
 
-/* LB / RB — supplied reference geometry */
+.custom .trigger {
+  width: 86px;
+  height: 95px;
+}
+
+/* Original trigger images removed */
+.custom .trigger.left {
+  background: none !important;
+  float: left;
+}
+
+.custom .trigger.right {
+  background: none !important;
+  float: right;
+}
+
 .custom .bumpers {
   position: absolute;
   width: 571px;
   height: 71px;
   left: 120px;
-  top: 61px;
 }
-.custom .bumper {
-  box-sizing: border-box;
-  width: 177px;
-  height: 30px;
-  border: 4px solid rgba(255,255,255,.72);
-  border-radius: 15px 15px 7px 7px;
-  background: transparent !important;
-}
-.custom .bumper.left { float:left; }
-.custom .bumper.right { float:right; }
 
-/* Guide */
+.custom .bumper {
+  width: 177px;
+  height: 71px;
+}
+
+.custom .pressed {
+  filter: invert(1);
+}
+
+.custom .bumper.pressed {
+  filter: brightness(2.5);
+}
+
+/* Original bumper images removed */
+.custom .bumper.left {
+  background: none !important;
+  float: left;
+}
+
+.custom .bumper.right {
+  background: none !important;
+  float: right;
+}
+
+/* Player indicator image removed, geometry preserved */
 .custom .quadrant {
   position: absolute;
-  box-sizing: border-box;
-  background: transparent !important;
-  border: 4px solid rgba(255,255,255,.72);
-  border-radius: 50%;
-  height: 48px;
-  width: 48px;
-  top: 123px;
-  left: 382px;
+  background: none !important;
+  height: 17px;
+  width: 111px;
+  top: 140px;
+  left: 240px;
 }
 
-/* View / Menu — supplied reference geometry */
+.custom .p0 {
+  background-position: 0 -6px;
+}
+
+.custom .p1 {
+  background-position: 0 -28px;
+}
+
+.custom .p2 {
+  background-position: 0 -49px;
+}
+
+.custom .p3 {
+  background-position: 0 -70px;
+}
+
 .custom .arrows {
   position: absolute;
   width: 157px;
@@ -96,19 +110,30 @@ html, body {
   top: 138px;
   left: 327px;
 }
+
 .custom .back,
 .custom .start {
-  box-sizing: border-box;
   width: 36px;
-  height: 26px;
-  border: 4px solid rgba(255,255,255,.72);
-  border-radius: 7px;
-  background: transparent !important;
+  height: 36px;
 }
-.custom .back { float:left; }
-.custom .start { float:right; }
 
-/* ABXY — exact supplied parent coordinates */
+.custom .back.pressed,
+.custom .start.pressed {
+}
+
+/* Original Start / Select images removed */
+.custom .back {
+  background: none !important;
+  float: left;
+  width: 38px;
+}
+
+.custom .start {
+  background: none !important;
+  float: right;
+  width: 36px;
+}
+
 .custom .abxy {
   position: absolute;
   width: 172px;
@@ -116,22 +141,39 @@ html, body {
   top: 75px;
   left: 532px;
 }
+
 .custom .button {
   position: absolute;
-  box-sizing: border-box;
-  width: 52px;
-  height: 52px;
-  border: 4px solid rgba(255,255,255,.72);
-  border-radius: 50%;
-  background: transparent !important;
+  width: 59px;
+  height: 59px;
 }
-.custom .a { top:110px; left:57px; }
-.custom .b { top:57px; right:0; }
-.custom .x { top:55px; left:0; }
-.custom .y { top:0; left:58px; }
 
-/* Sticks — exact supplied parent coordinates.
-   GamePad Viewer JS continues to apply movement inline. */
+.custom .button.pressed {
+}
+
+/* Original ABXY images removed */
+.custom .a {
+  background: none !important;
+  top: 110px;
+  left: 57px;
+}
+
+.custom .b {
+  background: none !important;
+  top: 57px;
+  right: 0px;
+}
+
+.custom .x {
+  background: none !important;
+  top: 55px;
+}
+
+.custom .y {
+  background: none !important;
+  left: 58px;
+}
+
 .custom .sticks {
   position: absolute;
   width: 422px;
@@ -139,23 +181,32 @@ html, body {
   top: 110px;
   left: 147px;
 }
+
 .custom .stick {
   position: absolute;
-  box-sizing: border-box;
   height: 92px;
   width: 94px;
-  border: 4px solid rgba(255,255,255,.72);
-  border-radius: 50%;
-  background: rgba(0,0,0,.001) !important;
-  box-shadow: inset 0 0 0 9px rgba(255,255,255,.10);
 }
-.custom .stick.left { top:0; left:0; }
+
+.custom .stick.pressed.left {
+}
+
+.custom .stick.pressed.right {
+}
+
+/* Original stick images removed */
+.custom .stick.left {
+  background: none !important;
+  top: 0;
+  left: 0;
+}
+
 .custom .stick.right {
+  background: none !important;
   top: calc(100% - 96px);
   left: calc(100% - 101px);
 }
 
-/* D-pad — exact supplied reference geometry */
 .custom .dpad {
   position: absolute;
   width: 140px;
@@ -163,42 +214,106 @@ html, body {
   top: 192px;
   left: 74px;
 }
+
 .custom .face {
+  background: none !important;
   position: absolute;
-  box-sizing: border-box;
-  border: 4px solid rgba(255,255,255,.72);
-  background: transparent !important;
 }
+
 .custom .face.up,
-.custom .face.down { width:38px; height:52px; }
+.custom .face.down {
+  width: 38px;
+  height: 52px;
+}
+
 .custom .face.left,
-.custom .face.right { width:52px; height:38px; }
-.custom .face.up { left:50px; top:0; border-radius:7px 7px 2px 2px; }
-.custom .face.down { left:50px; top:79px; border-radius:2px 2px 7px 7px; }
-.custom .face.left { top:47px; left:0; border-radius:7px 2px 2px 7px; }
-.custom .face.right { top:47px; right:0; border-radius:2px 7px 7px 2px; }
+.custom .face.right {
+  width: 52px;
+  height: 38px;
+}
 
-/* Active input language */
-.custom .pressed {
-  filter: none !important;
+.custom .face.up {
+  left: 50px;
+  top: 0;
+  background-position: 92px 0px;
 }
-.custom .button.pressed,
-.custom .bumper.pressed,
-.custom .back.pressed,
-.custom .start.pressed,
-.custom .face.pressed,
-.custom .stick.pressed {
-  background: #fff !important;
-  border-color: #fff !important;
-  box-shadow: none !important;
+
+.custom .face.down {
+  left: 50px;
+  top: 79px;
+  background-position: 131px 0;
 }
+
+.custom .face.left {
+  top: 47px;
+  left: 0;
+  background-position: 0px 0;
+}
+
+.custom .face.right {
+  top: 47px;
+  right: 0px;
+  background-position: 53px 0;
+}
+
 .custom .face.pressed {
-  margin-top: 0 !important;
+  margin-top: 5px;
+  background-position-y: 52px;
 }
 
-/* No legacy artwork */
-.custom .trigger-button.left,
-.custom .trigger-button.right,
-.fstick {
-  display: none !important;
+.custom .trigger-button.left {
 }
+
+.custom .trigger-button.right {
+}
+
+.custom .trigger-button.left.pressed {
+}
+
+.custom .trigger-button.right.pressed {
+}
+
+/* Fight-stick geometry preserved, artwork removed */
+.fstick {
+  position: absolute;
+  width: 136px;
+  height: 135px;
+  top: 224px;
+  left: 230px;
+  background: none !important;
+}
+
+.fstick.up {
+  background: none !important;
+}
+
+.fstick.down {
+  background: none !important;
+}
+
+.fstick.left {
+  background: none !important;
+}
+
+.fstick.right {
+  background: none !important;
+}
+
+.fstick.up.right {
+  background: none !important;
+}
+
+.fstick.up.left {
+  background: none !important;
+}
+
+.fstick.down.right {
+  background: none !important;
+}
+
+.fstick.down.left {
+  background: none !important;
+}
+
+/* END Elite 2 Controller Styling */
+
